@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.collezione})"> </head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+    <div>
+    	
+    	<div id= "divDescPage"th:if="${collezione}" th:object="${collezione}">
+    	
+			<div>
+			<span th:text="*{nome}"></span>
+			</div>
+			
+			<div>Curatore: 
+			<span th:text="*{curatore.nome}"> </span>
+			
+			<span th:text="*{curatore.cognome}"> </span>
+			</div>
+			
+			<ul>
+			<li th:each="opera : ${opere}">
+				<a href="opera.html" 
+				   th:href="@{'/opera' + '/' + ${opera.id}}" 
+				   th:text="${opera.cognome}"></a>
+				   
+				<a href="artista.html" 
+				   th:href="@{'/artista' + '/' + ${opera.artista.id}}" 
+				   th:text="|${opera.artista.nome}${opera.artista.cognome}|"></a>
+			</li>
+		</ul>
+			
+			
+			<!--  <img th:src="*{image}">Foto</img>-->
+   		
+   		</div>
+    	<div th:unless="${collezione}">Questa collezione non esiste</div>
+    </div>
+    <footer th:replace="fragments/base.html :: fondo('/default')"></footer>
+</body>
+</html>

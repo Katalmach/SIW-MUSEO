@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.artista})"> </head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+    <div>
+    	
+    	<div id="divDescPage"th:if="${artista}" th:object="${artista}">
+    	
+			<div>
+			<span th:text="*{nome}"></span>
+
+			<span th:text="*{cognome}"> </span>
+			</div>
+			<div>Data di nascita: 
+			<span th:text="*{dataDiNascita}"> </span>
+			</div>
+			<div>Luogo di nascita:
+			<span th:text="*{luogoDiNascita}"> </span>
+			</div>
+			<div>Data di morte:
+			<span th:text="*{dataDiMorte}"> </span>
+			</div>
+			<div>Luogo di morte:
+			<span th:text="*{luogoDiMorte}"> </span>
+			</div>
+			<!--  <img th:src="*{image}">Foto</img>-->
+   		
+   		</div>
+    	<div th:unless="${artista}">Questo artista non esiste</div>
+    </div>
+    <footer th:replace="fragments/base.html :: fondo('/default')"></footer>
+</body>
+</html>

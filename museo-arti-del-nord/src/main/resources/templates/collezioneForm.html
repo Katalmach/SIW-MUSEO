@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/base.html :: headerfiles(title=#{title.collezioneForm})">
+</head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div></div>
+	<form id="loginForm" th:action="@{/admin/collezione}" method="POST"
+		th:object="${collezione}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>
+
+		<div id="divForm2">
+			<h4>Inserisci una collezione</h4>
+
+			<div>
+				<span>Nome: </span> <span><input type="text"
+					th:field="*{nome}" /></span> <span th:if="${#fields.hasErrors('nome')}"
+					th:errors="*{nome}"></span>
+			</div>
+
+			<div>
+				<span>Nome e cognome del curatore: </span> <span><input
+					type="text" th:field="*{curatore.nome}" /></span> <span
+					th:if="${#fields.hasErrors('curatore.nome')}"
+					th:errors="*{curatore.nome}"></span> <span><input
+					type="text" th:field="*{curatore.cognome}" /></span> <span
+					th:if="${#fields.hasErrors('curatore.cognome')}"
+					th:errors="*{curatore.nome}"></span>
+
+				<div>
+					<ul>
+						<li th:each="opera : ${opere}"><a href="opera.html"
+							th:href="@{'/opera' + '/' + ${opera.id}}"
+							th:text="${opera.titolo}">Notte stellata</a></li>
+					</ul>
+				</div>
+
+				<span><button type="submit">Invio</button></span>
+			</div>
+		</div>
+	</form>
+	<footer th:replace="fragments/base.html :: fondo('/default')"></footer>
+</body>
+</html>

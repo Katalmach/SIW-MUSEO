@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title='Museo Arti Nordiche')"> </head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+   
+    <div>
+    	<h4 th:text="#{header.menuAdmin}">Menu</h4>
+		
+		<div>
+			<a th:href="@{/artista}">Elenco artisti</a>
+   		</div>
+   		
+   		<div>
+			<a th:href="@{/admin/artista}">Inserisci un artista</a>
+   		</div>
+   		
+   		<div>
+			<a th:href="@{/collezione}">Collezioni</a>
+   		</div>
+   		
+   		<div>
+			<a th:href="@{/admin/collezione}">Inserisci una collezione</a>
+   		</div>
+   		
+   		<div>
+			<a th:href="@{/opera}">Elenco opere</a>
+   		</div>
+   		
+   		<div>
+			<a th:href="@{/admin/opera}">Inserisci opera</a>
+   		</div>
+   		
+   		<div>
+			<a th:href="@{/logout}">Logout</a>
+   		</div>
+   		
+    </div>
+    <footer th:replace="fragments/base.html :: fondo(home='/default')"></footer>
+</body>
+</html>

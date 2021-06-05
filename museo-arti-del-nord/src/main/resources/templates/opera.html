@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.opera})"> </head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+    <div>
+    	<h4 th:text="#{header.opera}">...</h4>
+    	<div th:if="${opera}" th:object="${opera}">
+			<h5 th:text="Titolo: *{titolo}">titolo</h5>
+			<span th:text="Anno di pubblicazione: *{anno}">anno </span>
+			<span th:text="Autore: *{artista.nome}">autore </span>
+			<img th:src="*{image}">Foto</img>
+			<span th:text="*{descrizione}">descrizione </span>
+   		
+   		</div>
+    	<div th:unless="${opera}">Quest'opera non esiste</div>
+    </div>
+    <footer th:replace="fragments/base.html :: fondo('/default')"></footer>
+</body>
+</html>
