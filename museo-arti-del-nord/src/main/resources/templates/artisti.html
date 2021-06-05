@@ -9,7 +9,7 @@
 			<li th:each="artista : ${artisti}">
 				<a href="artista.html" 
 				   th:href="@{'/artista' + '/' + ${artista.id}}" 
-				   th:text="${artista.nome}"></a>
+				   th:text="|${artista.nome} &nbsp; ${artista.cognome}|"></a>
 			
 			</li>
 		</ul>

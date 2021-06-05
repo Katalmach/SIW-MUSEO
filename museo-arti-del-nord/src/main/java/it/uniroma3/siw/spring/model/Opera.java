@@ -2,7 +2,11 @@ package it.uniroma3.siw.spring.model;
 
 
 
-import java.awt.Image;
+
+
+
+import java.io.File;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -30,9 +34,9 @@ public class Opera {
 	@Column(length = 2000)
 	private String descrizione;
 	
-	//@Column(nullable=false)
-	//private Image image;
-	
+	@Column(nullable=false)
+	private String image;
+
 	// associazioni
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name ="artista_id")
@@ -46,11 +50,11 @@ public class Opera {
 	public Opera() {
 	}
 	
-	public Opera(String titolo, Integer anno, String descrizione,Image image) {
+	public Opera(String titolo, Integer anno, String descrizione,String image) {
 		
 		this.titolo = titolo;
 		this.anno = anno;
-	//	this.image= image;
+		this.image= image;
 		this.descrizione = descrizione;
 	}
 
@@ -125,5 +129,13 @@ public class Opera {
 		return "Opera [id=" + id + ", titolo=" + titolo + ", anno=" + anno + ", descrizione=" + descrizione
 				+ ", artista=" + this.getArtista().getNome() + " " + this.getArtista().getCognome() 
 				+ ", collezione=" + this.getCollezioni().getNome() + "]";
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}	
 }

@@ -23,14 +23,19 @@ public class Artista {
 	
 	@Column(nullable = false)
 	private String nome;
+	
 	@Column(nullable = false)
 	private String cognome;
+	
 	@Column(nullable = false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	
 	private LocalDate dataDiNascita;
 	@Column(nullable = false)
+	
 	private String luogoDiNascita;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
+	
 	private LocalDate dataDiMorte;  // sono null se gli artisti
 	private String luogoDiMorte;	// sono ancora in vita
 	@Column(nullable = false)
