@@ -51,6 +51,6 @@ public class CuratoreController {
             model.addAttribute("curatori", this.curatoreService.tutti());
             return "curatori";
         }
-        return "curatorieorm";
+        return "curatoriForm";
     }
 }

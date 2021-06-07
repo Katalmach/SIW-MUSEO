@@ -40,8 +40,19 @@
 						th:text="|${artista.nome} ${artista.cognome}|"></option>
 				</select>
 			</div>
+			
+			<div>
+				<span>Collezione: </span><select name="collezioneSelezionata">
+					<option th:each="collezione : ${collezioni}" th:value="${collezione.id}"
+						th:text="${collezione.nome} "></option>
+				</select>
+			</div>
 			<input type="file" th:field="*{image}"
 				accept="image/gif, image/jpeg, image/png">
+			
+			
+			
+			
 			<div>
 				<span><button type="submit">Invio</button></span>
 			</div>

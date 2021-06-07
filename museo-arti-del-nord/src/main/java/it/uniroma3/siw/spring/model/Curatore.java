@@ -19,7 +19,7 @@ public class Curatore {
 	// attributi
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	private Long matricola;
+	private Long id;
 	
 	@Column(nullable = false)
 	private String nome;
@@ -51,12 +51,12 @@ public class Curatore {
 	}
 
 	// metodi getter e setter
-	public Long getMatricola() {
-		return matricola;
+	public Long getId() {
+		return id;
 	}
 
-	public void setMatricola(Long matricola) {
-		this.matricola = matricola;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -105,7 +105,7 @@ public class Curatore {
 	// nuovo toString
 	@Override
 	public String toString() {
-		return "Curatore [matricola=" + matricola + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", numeroDiTelefono="
+		return "Curatore [matricola=" + id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", numeroDiTelefono="
 				+ numeroDiTelefono + "]";
 	}	
 }

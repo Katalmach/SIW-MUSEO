@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.uniroma3.siw.spring.model.Collezione;
 import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.repository.OperaRepository;
 
@@ -17,9 +18,7 @@ public class OperaService {
 	@Autowired
 	private OperaRepository operaRepository; 
 	
-	@Autowired
-	private ArtistaService artistaService; 
-	
+
 	
 	@Transactional
 	public Opera inserisci(Opera opera) {
@@ -48,5 +47,13 @@ public class OperaService {
 			return true;
 		else 
 			return false;
+	}
+
+	public Opera operaPerCollezione(Collezione collezione) {
+		Optional<Opera> optional = operaRepository.findByCollezione(collezione);
+		if (optional.isPresent())
+			return optional.get();
+		else 
+			return null;
 	}
 }

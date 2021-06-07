@@ -22,21 +22,18 @@
 			</div>
 
 			<div>
-				<span>Nome e cognome del curatore: </span> <span><input
-					type="text" th:field="*{curatore.nome}" /></span> <span
-					th:if="${#fields.hasErrors('curatore.nome')}"
-					th:errors="*{curatore.nome}"></span> <span><input
-					type="text" th:field="*{curatore.cognome}" /></span> <span
-					th:if="${#fields.hasErrors('curatore.cognome')}"
-					th:errors="*{curatore.nome}"></span>
-
-				<div>
-					<ul>
-						<li th:each="opera : ${opere}"><a href="opera.html"
-							th:href="@{'/opera' + '/' + ${opera.id}}"
-							th:text="${opera.titolo}">Notte stellata</a></li>
-					</ul>
-				</div>
+				<span>Descrizione: </span> <span><input type="text"
+					th:field="*{descrizione}" /></span> <span th:if="${#fields.hasErrors('descrizione')}"
+					th:errors="*{descrizione}"></span>
+			</div>
+			
+			<div>
+				<span>Curatore:  </span><select name="curatoreSelezionato">
+					<option th:each="curatore : ${curatori}" th:value="${curatore.id}"
+						th:text="|${curatore.nome} ${curatore.cognome}|"></option>
+				</select>
+			</div>
+					
 
 				<span><button type="submit">Invio</button></span>
 			</div>

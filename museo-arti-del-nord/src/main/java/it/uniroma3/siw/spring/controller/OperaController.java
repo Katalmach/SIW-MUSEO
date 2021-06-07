@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import it.uniroma3.siw.spring.controller.validator.OperaValidator;
 import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.service.ArtistaService;
+import it.uniroma3.siw.spring.service.CollezioneService;
 import it.uniroma3.siw.spring.service.OperaService;
 
 @Controller
@@ -29,13 +30,17 @@ public class OperaController {
 	@Autowired
 	private OperaValidator operaValidator;
 
+	@Autowired
+	private CollezioneService collezioneService;
+
 	
 
 	@RequestMapping(value="/admin/opera", method = RequestMethod.GET)
 	public String addOpera(Model model) {
 		model.addAttribute("opera", new Opera());
 		model.addAttribute("artisti", this.artistaService.tutti());
-	
+		model.addAttribute("collezioni", this.collezioneService.tutti());
+		
 		return "operaForm";
 	}
 
@@ -53,10 +58,13 @@ public class OperaController {
 
 	@RequestMapping(value = "/admin/opera", method = RequestMethod.POST)
 	public String addOpera(@RequestParam Long artistaSelezionato,
+							@RequestParam Long collezioneSelezionata,
 			@ModelAttribute("opera") Opera opera, Model model, BindingResult bindingResult) {
 		this.operaValidator.validate(opera, bindingResult);
 		if(!bindingResult.hasErrors()) {
 			opera.setArtista(this.artistaService.artistaPerId(artistaSelezionato));
+			opera.setCollezione(this.collezioneService.collezionePerId(collezioneSelezionata));
+			
 			this.operaService.inserisci(opera);
 			model.addAttribute("opere", this.operaService.tutti());
 			return "opere";
