@@ -39,7 +39,7 @@ public class Opera {
 	@JoinColumn(name ="artista_id")
 	private Artista artista;
 	
-	@ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
+	@ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
 	@JoinColumn(name = "collezione_id")
 	private Collezione collezione;
 

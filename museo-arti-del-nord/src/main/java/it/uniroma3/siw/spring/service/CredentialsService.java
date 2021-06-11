@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.repository.CredentialsRepository;
 
+
 @Service
 public class CredentialsService {
 	
@@ -33,7 +34,7 @@ public class CredentialsService {
 		
     @Transactional
     public Credentials saveCredentials(Credentials credentials) {
-        credentials.setRole(Credentials.ADMIN_ROLE);
+        credentials.setRole(Credentials.DEFAULT_ROLE);
         credentials.setPassword(this.passwordEncoder.encode(credentials.getPassword()));
         return this.credentialsRepository.save(credentials);
     }

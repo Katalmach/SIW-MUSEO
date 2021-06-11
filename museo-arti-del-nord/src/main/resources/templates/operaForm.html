@@ -14,16 +14,15 @@
 		<div id="divForm">
 			<h4>Inserisci i dati di un'opera:</h4>
 			<div>
-				<span>Titolo:
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-				<span><input type="text" th:field="*{titolo}" /></span> <span
-					th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></span>
+				<span>Titolo:</span>
+				<span><input type="text" th:field="*{titolo}" /></span>
+				<span th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></span>
 			</div>
 
 			<div>
-				<span>Anno di pubblicazione:</span> <span><input type="text"
-					th:field="*{anno}" /></span> <span th:if="${#fields.hasErrors('anno')}"
-					th:errors="*{anno}"></span>
+				<span>Anno di pubblicazione:</span> 
+				<span><input type="text" th:field="*{anno}" /></span> 
+				<span th:if="${#fields.hasErrors('anno')}" th:errors="*{anno}"></span>
 			</div>
 
 

@@ -1,7 +1,6 @@
 package it.uniroma3.siw.spring.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -13,7 +12,7 @@ public interface OperaRepository extends CrudRepository<Opera,Long>{
 	
 	public List<Opera> findByArtista(Artista artista);
 
-	public Optional<Opera> findByCollezione(Collezione collezione);
+	public List<Opera> findByCollezione(Collezione collezione);
 	
 	public List<Opera> findByTitolo(String titolo);
 	

@@ -64,7 +64,6 @@ public class OperaController {
 		if(!bindingResult.hasErrors()) {
 			opera.setArtista(this.artistaService.artistaPerId(artistaSelezionato));
 			opera.setCollezione(this.collezioneService.collezionePerId(collezioneSelezionata));
-			
 			this.operaService.inserisci(opera);
 			model.addAttribute("opere", this.operaService.tutti());
 			return "opere";

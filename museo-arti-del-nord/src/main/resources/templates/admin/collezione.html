@@ -33,6 +33,12 @@
 						th:href="@{'/artista' + '/' + ${opera.artista.id}}"
 						th:text="|${opera.artista.nome}&nbsp;${opera.artista.cognome}|" ></a>
 						
+			
+						<form id="btnElimina"  th:action="@{'/eliminaOpera/{id}'(id=${opera.id})}" method="POST" th:object="${opera}">
+							<input type="hidden" name="_method" value="delete" />
+							<button type="submit" value="Submit" >Elimina</button>
+						</form>
+						
 									<img id="img-opera" th:src="@{'/images' + '/' + ${opera.image}}">
 			
 						</li>

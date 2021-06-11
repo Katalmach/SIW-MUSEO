@@ -7,25 +7,40 @@
     	
     	<div id="divDescPage"th:if="${artista}" th:object="${artista}">
     	
-			<div>
-			<span th:text="*{nome}"></span>
-
-			<span th:text="*{cognome}"> </span>
+			<div id="margin-artista">
+			<span style="font-size: 5vw;" th:text="*{nome}"></span> &nbsp;
+			<span style="font-size: 5vw;" th:text="*{cognome}"> </span>
 			</div>
-			<div>Data di nascita: 
+			
+			<div class="artista-size">Data di nascita: 
 			<span th:text="*{dataDiNascita}"> </span>
 			</div>
-			<div>Luogo di nascita:
+			<div class="artista-size">Luogo di nascita:
 			<span th:text="*{luogoDiNascita}"> </span>
 			</div>
-			<div>Data di morte:
+			<div class="artista-size">Data di morte:
 			<span th:text="*{dataDiMorte}"> </span>
 			</div>
-			<div>Luogo di morte:
+			<div class="artista-size">Luogo di morte:
 			<span th:text="*{luogoDiMorte}"> </span>
 			</div>
-			<!--  <img th:src="*{image}">Foto</img>-->
-   		
+			<div class="artista-size">Nazionalità:
+			<span th:text="*{nazionalita}"> </span>
+			</div>
+			<div class="artista-size">Biografia:
+			<span> </span>
+			</div>
+			<div id="list-opere-size">Opere:
+			</div>
+				<ul style="margin-left: 5em;">
+				<li th:each="opera : ${artista.opere}">                                          
+     				<a style="font-size: 2vw; color: black; font-style: italic;"
+     				href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}"
+     				th:text="${opera.titolo}"> titolo </a>                                             
+     				<img id="img-artista" th:src="@{'/images' + '/' + ${opera.image}}"/>                                     
+  				</li>
+  				</ul>
+			   		
    		</div>
     	<div th:unless="${artista}">Questo artista non esiste</div>
     </div>

@@ -48,11 +48,15 @@ public class OperaService {
 		else 
 			return false;
 	}
+	
+	public void elimina(Opera opera) {
+		operaRepository.delete(opera);
+	}
 
-	public Opera operaPerCollezione(Collezione collezione) {
-		Optional<Opera> optional = operaRepository.findByCollezione(collezione);
-		if (optional.isPresent())
-			return optional.get();
+	public List<Opera> operaPerCollezione(Collezione collezione) {
+		List<Opera> opere = operaRepository.findByCollezione(collezione);
+		if (opere!=null)
+			return opere;
 		else 
 			return null;
 	}

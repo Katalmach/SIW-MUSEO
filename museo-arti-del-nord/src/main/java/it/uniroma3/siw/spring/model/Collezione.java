@@ -25,7 +25,7 @@ public class Collezione {
 	private String descrizione;
 	
 	// associazioni
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE,CascadeType.MERGE})
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Curatore curatore;
 	
 	
