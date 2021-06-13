@@ -108,4 +108,15 @@ public class Curatore {
 		return "Curatore [matricola=" + id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", numeroDiTelefono="
 				+ numeroDiTelefono + "]";
 	}	
+	
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
+
+	
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
 }

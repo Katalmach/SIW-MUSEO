@@ -1,34 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head
-	th:replace="fragments/base.html :: headerfiles(title=#{header.collezioni})">
+	th:replace="fragments/base.html :: headerfiles(title=#{header.artisti})">
 </head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div id="divElenco">
-
-		<h4 th:text="#{header.collezioni}">Collezioni:</h4>
+		<h4 th:text="#{header.artisti}">Elenco artisti</h4>
 		<ul>
-			<li id="liPerGets" th:each="collezione : ${collezioni}"><a
-				href="collezione.html"
-				th:href="@{'/collezione' + '/' + ${collezione.id}}"
-				th:text="${collezione.nome}"></a>
-
-
+			<li th:each="artista : ${artisti}"><a href="artista.html"
+				th:href="@{'/artista' + '/' + ${artista.id}}"
+				th:text="|${artista.nome} &nbsp; ${artista.cognome}|"></a>
 				<form id="btnElimina"
-					th:action="@{'/eliminaCollezione/{id}'(id=${collezione.id})}"
-					method="POST" th:object="${collezione}">
+					th:action="@{'/eliminaArtista/{id}'(id=${artista.id})}"
+					method="POST" th:object="${artista}">
 					<input type="hidden" name="_method" value="delete" />
 					<button type="submit" value="Submit">Elimina</button>
 				</form>
 				<form id="btnElimina"
-					th:action="@{'/modificaCollezione/{id}'(id=${collezione.id})}"
-					method="POST" th:object="${collezione}">
+					th:action="@{'/modificaArtista/{id}'(id=${artista.id})}"
+					method="POST" th:object="${artista}">
 					<input type="hidden" name="_method" value="delete" />
 					<button type="submit" value="Submit">Modifica</button>
 				</form></li>
 		</ul>
-
 	</div>
 	<footer th:replace="fragments/base.html :: fondo('/default')"></footer>
 </body>

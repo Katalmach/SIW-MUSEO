@@ -44,4 +44,40 @@ public class CuratoreService {
 		else 
 			return false;
 	}
+
+	@Transactional
+	public Object curatorePerCognome(String oggettoDaCercare) {
+		List<Curatore> curatori = curatoreRepository.findByCognome(oggettoDaCercare);
+		if (curatori.size()>0)
+			return curatori;
+		else 
+			return null;
+	}
+
+	@Transactional
+	public boolean alreadyExistsByCognome(String oggettoDaCercare) {
+		List<Curatore> curatori = this.curatoreRepository.findByCognome(oggettoDaCercare);
+		if (curatori.size() > 0)
+			return true;
+		else 
+			return false;
+	}
+
+	@Transactional
+	public Object curatorePerNome(String oggettoDaCercare) {
+		List<Curatore> curatori = curatoreRepository.findByNome(oggettoDaCercare);
+		if (curatori.size()>0)
+			return curatori;
+		else 
+			return null;
+	}
+
+	@Transactional
+	public boolean alreadyExistsByNome(String oggettoDaCercare) {
+		List<Curatore> curatori = this.curatoreRepository.findByNome(oggettoDaCercare);
+		if (curatori.size() > 0)
+			return true;
+		else 
+			return false;
+	}
 }

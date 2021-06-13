@@ -29,6 +29,15 @@ public class ArtistaController {
     	model.addAttribute("artista", new Artista());
         return "artistaForm";
     }
+    
+    @RequestMapping(value = "/eliminaArtista/{id}", method = RequestMethod.POST)
+    public String eliminaArtista(@PathVariable("id") Long id, Model model) {
+    	this.artistaService.artistaPerId(id).setOpere(null);
+    	this.artistaService.elimina(this.artistaService.artistaPerId(id));
+    	model.addAttribute("artisti", this.artistaService.tutti());
+    	
+    	return "artisti";
+    }
 
     @RequestMapping(value = "/artista/{id}", method = RequestMethod.GET)
     public String getArtista(@PathVariable("id") Long id, Model model) {
@@ -43,9 +52,14 @@ public class ArtistaController {
     	return "artisti";
     }
 
+    @RequestMapping(value = "/admin/artisti", method = RequestMethod.GET)
+    public String getArtistiAdmin(Model model) {
+    		model.addAttribute("artisti", this.artistaService.tutti());
+    		return "/admin/artisti";
+    }
 
     @RequestMapping(value = "/artista", method = RequestMethod.GET)
-    public String getOpere(Model model) {
+    public String getArtisti(Model model) {
     		model.addAttribute("artisti", this.artistaService.tutti());
     		return "artisti";
     }

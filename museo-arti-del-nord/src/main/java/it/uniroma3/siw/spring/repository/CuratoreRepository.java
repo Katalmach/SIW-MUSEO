@@ -10,4 +10,8 @@ public interface CuratoreRepository extends CrudRepository<Curatore,Long>{
 	
 	public List<Curatore> findByNomeAndCognome(String nome,String cognome);
 
+	public List<Curatore> findByNome(String nome);
+
+	public List<Curatore> findByCognome(String cognome);
+
 }

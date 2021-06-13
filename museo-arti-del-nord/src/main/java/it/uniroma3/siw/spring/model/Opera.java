@@ -35,7 +35,7 @@ public class Opera {
 	private String image;
 
 	// associazioni
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name ="artista_id")
 	private Artista artista;
 	
@@ -135,4 +135,15 @@ public class Opera {
 	public void setImage(String image) {
 		this.image = image;
 	}	
+	
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
+
+	
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
 }

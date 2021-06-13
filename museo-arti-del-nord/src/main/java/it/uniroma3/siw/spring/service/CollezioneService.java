@@ -44,8 +44,26 @@ public class CollezioneService {
 
 	@Transactional
 	public boolean alreadyExists(Collezione collezione) {
-		List<Collezione> collezioni = this.collezioneRepository.findByNome(collezione.getNome());
-		if (collezioni.size() > 0)
+		Optional<Collezione> collezioni = this.collezioneRepository.findByNome(collezione.getNome());
+		if (collezioni.isPresent())
+			return true;
+		else 
+			return false;
+	}
+
+	@Transactional
+	public Object collezionePerNome(String oggettoDaCercare) {
+		Optional<Collezione> collezioni = collezioneRepository.findByNome(oggettoDaCercare);
+		if (collezioni.isPresent())
+			return collezioni;
+		else 
+			return null;
+		
+	}
+
+	public boolean alreadyExistsByNome(String oggettoDaCercare) {
+		Optional<Collezione> collezioni = this.collezioneRepository.findByNome(oggettoDaCercare);
+		if (collezioni.isPresent())
 			return true;
 		else 
 			return false;

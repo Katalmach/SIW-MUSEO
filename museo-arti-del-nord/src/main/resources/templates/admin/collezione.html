@@ -21,29 +21,32 @@
 				Curatore:&nbsp; <span th:text="*{curatore.nome}"> </span> &nbsp; <span
 					th:text="*{curatore.cognome}"> </span>
 			</div>
-			<div id="opere-collezione">
-				Opere in collezione:&nbsp;
-				</div>
-				<ul id="listaCol">
-					<li style="font-size:35%;" th:each="opera : *{opere}"><a id="linkLista" href="opera.html"
-						th:href="@{'/opera' + '/' + ${opera.id}}"
-						th:text="${opera.titolo}"></a>
-						-&nbsp;
-						 <a id ="linkLista"
-						th:href="@{'/artista' + '/' + ${opera.artista.id}}"
-						th:text="|${opera.artista.nome}&nbsp;${opera.artista.cognome}|" ></a>
-						
-			
-						<form id="btnElimina"  th:action="@{'/eliminaOpera/{id}'(id=${opera.id})}" method="POST" th:object="${opera}">
-							<input type="hidden" name="_method" value="delete" />
-							<button type="submit" value="Submit" >Elimina</button>
-						</form>
-						
-									<img id="img-opera" th:src="@{'/images' + '/' + ${opera.image}}">
-			
-						</li>
+			<div id="opere-collezione">Opere in collezione:&nbsp;</div>
+			<ul id="listaCol">
+				<li style="font-size: 35%;" th:each="opera : *{opere}"><a
+					id="linkLista" href="opera.html"
+					th:href="@{'/opera' + '/' + ${opera.id}}" th:text="${opera.titolo}"></a>
+					-&nbsp; <a id="linkLista"
+					th:href="@{'/artista' + '/' + ${opera.artista.id}}"
+					th:text="|${opera.artista.nome}&nbsp;${opera.artista.cognome}|"></a>
 
-				</ul>
+
+					<form id="btnElimina"
+						th:action="@{'/eliminaOperaDaCollezione/{id}'(id=${opera.id})}" method="POST"
+						th:object="${opera}">
+						<input type="hidden" name="_method" value="delete" />
+						<button type="submit" value="Submit">Elimina</button>
+					</form>
+					<form id="btnElimina"
+						th:action="@{'/modificaOpera/{id}'(id=${opera.id})}"
+						method="POST" th:object="${opera}">
+						<input type="hidden" name="_method" value="delete" />
+						<button type="submit" value="Submit">Modifica</button>
+					</form> <img id="img-opera" th:src="@{'/images' + '/' + ${opera.image}}">
+
+				</li>
+
+			</ul>
 
 		</div>
 		<div th:unless="${collezione}">Questa collezione non esiste</div>

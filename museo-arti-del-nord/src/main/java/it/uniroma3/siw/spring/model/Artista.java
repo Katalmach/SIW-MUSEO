@@ -27,6 +27,8 @@ public class Artista {
 	@Column(nullable = false)
 	private String cognome;
 	
+	private String biografia;
+	
 	@Column(nullable = false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	
@@ -34,10 +36,12 @@ public class Artista {
 	@Column(nullable = false)
 	
 	private String luogoDiNascita;
-	@DateTimeFormat(pattern="yyyy-MM-dd")
 	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataDiMorte;  // sono null se gli artisti
+	
 	private String luogoDiMorte;	// sono ancora in vita
+	
 	@Column(nullable = false)
 	private String nazionalita;
 	
@@ -134,4 +138,25 @@ public class Artista {
 	public void setOpere(List<Opera> opere) {
 		this.opere = opere;
 	}
+
+	
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
+
+	
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
+
+	public String getBiografia() {
+		return biografia;
+	}
+
+	public void setBiografia(String biografia) {
+		this.biografia = biografia;
+	}
+	
 }

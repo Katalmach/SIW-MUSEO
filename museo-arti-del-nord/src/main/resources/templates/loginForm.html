@@ -7,8 +7,9 @@
 	rel="stylesheet">
 </head>
 <body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
-
+	<header id ="headerLoginForm">
+	<span>Museo Ferrante Rittatore Von Willer</span>
+	</header>
 	<form id="loginForm" th:action="@{/login}" method="POST">
 		
 		<div id="divForm">
@@ -22,9 +23,15 @@
 					type="password" required />
 				</span>
 			</div>
+			
+			
+			
 			<div>
 				<span><button type="submit">Login</button></span>
 			</div>
+			
+			<span><a th:href="@{/register}" th:text="#{index.register}"></a>
+				</span>
 			
 		</div>
 	</form>

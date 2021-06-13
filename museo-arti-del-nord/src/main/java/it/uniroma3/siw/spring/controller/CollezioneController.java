@@ -52,8 +52,8 @@ public class CollezioneController {
     	return "collezione";
     }
     
-    @RequestMapping(value = "/eliminaOpera/{id}", method = RequestMethod.POST)
-    public String eliminaOpera(@PathVariable("id") Long id, Model model) {
+    @RequestMapping(value = "/eliminaOperaDaCollezione/{id}", method = RequestMethod.POST)
+    public String eliminaOperaDaCollezione(@PathVariable("id") Long id, Model model) {
     	Long idCollezione= this.operaService.operaPerId(id).getCollezione().getId();
     	model.addAttribute("collezione", this.collezioneService.collezionePerId(idCollezione));
     	
@@ -65,7 +65,8 @@ public class CollezioneController {
     @RequestMapping(value = "/eliminaCollezione/{id}", method = RequestMethod.POST)
     public String eliminaCollezione(@PathVariable("id") Long id, Model model) {
     	this.collezioneService.elimina(this.collezioneService.collezionePerId(id));
-    	return "collezione";
+    	model.addAttribute("collezioni", this.collezioneService.tutti());
+    	return "collezioni";
     }
 
     @RequestMapping(value = "/admin/collezioni", method = RequestMethod.GET)
@@ -83,10 +84,11 @@ public class CollezioneController {
     public String addCollezione(@RequestParam Long curatoreSelezionato,
     		@ModelAttribute("collezione") Collezione collezione, 
     									Model model, BindingResult bindingResult) {
+    	
     	this.collezioneValidator.validate(collezione, bindingResult);
         if (!bindingResult.hasErrors()) {
-        	collezione.setCuratore(this.curatoreService.curatorePerId(curatoreSelezionato));
         	this.collezioneService.inserisci(collezione);
+        	collezione.setCuratore(this.curatoreService.curatorePerId(curatoreSelezionato));
         	model.addAttribute("collezioni", this.collezioneService.tutti());
             return "collezioni";
         }

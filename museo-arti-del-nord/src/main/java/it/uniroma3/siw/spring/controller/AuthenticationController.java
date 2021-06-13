@@ -14,7 +14,9 @@ import it.uniroma3.siw.spring.controller.validator.CredentialsValidator;
 import it.uniroma3.siw.spring.controller.validator.UserValidator;
 import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.User;
+import it.uniroma3.siw.spring.service.ArtistaService;
 import it.uniroma3.siw.spring.service.CredentialsService;
+import it.uniroma3.siw.spring.service.OperaService;
 
 @Controller
 public class AuthenticationController {
@@ -27,6 +29,9 @@ public class AuthenticationController {
 	
 	@Autowired
 	private CredentialsValidator credentialsValidator;
+
+	private OperaService operaService;
+	private ArtistaService artistaService;
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET) 
 	public String showRegisterForm (Model model) {
@@ -51,8 +56,9 @@ public class AuthenticationController {
     	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     	Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
-            return "admin/home";
-        }
+    		return "admin/home";
+    	}
+    	model.addAttribute("opere", this.operaService.operePerArtista(this.artistaService.artistaPerNomeECognome("Vincent", "Van Gogh")));
         return "home";
     }
 	

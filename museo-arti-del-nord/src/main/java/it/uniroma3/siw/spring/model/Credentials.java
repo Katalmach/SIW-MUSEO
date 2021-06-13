@@ -69,4 +69,15 @@ public class Credentials {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
+
+	
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
+	}
 }

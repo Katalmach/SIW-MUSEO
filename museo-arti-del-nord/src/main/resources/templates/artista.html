@@ -28,7 +28,7 @@
 			<span th:text="*{nazionalita}"> </span>
 			</div>
 			<div class="artista-size">Biografia:
-			<span> </span>
+			<span th:text="*{biografia}"> </span>
 			</div>
 			<div id="list-opere-size">Opere:
 			</div>
@@ -36,7 +36,7 @@
 				<li th:each="opera : ${artista.opere}">                                          
      				<a style="font-size: 2vw; color: black; font-style: italic;"
      				href="opera.html" th:href="@{'/opera' + '/' + ${opera.id}}"
-     				th:text="${opera.titolo}"> titolo </a>                                             
+     				th:text="${opera.titolo}"> Titolo </a>                                             
      				<img id="img-artista" th:src="@{'/images' + '/' + ${opera.image}}"/>                                     
   				</li>
   				</ul>

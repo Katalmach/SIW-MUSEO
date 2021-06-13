@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/base.html :: headerfiles(title=#{title.artistaForm})"> </head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
-	<div>
-			</div>
+
 	<form id="loginForm" th:action="@{/admin/artista}" method="POST" th:object="${artista}">
 		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
@@ -54,9 +53,16 @@
 				<span><input type="text" th:field="*{nazionalita}" /></span>
 				<span th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"></span>
 			</div>
-		
+			
 			<div>
-				<span><button type="submit">Invio</button></span>
+				<span>Biografia: </span>
+				<span><input type="text" th:field="*{biografia}" /></span>
+				<span th:if="${#fields.hasErrors('biografia')}" th:errors="*{biografia}"></span>
+			</div>
+			
+			<div>
+			
+				<span><button type="submit">Conferma</button></span>
 			</div>
 		</div>
 	</form>

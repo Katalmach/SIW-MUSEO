@@ -44,10 +44,57 @@ public class ArtistaService {
 
 	@Transactional
 	public boolean alreadyExists(Artista artista) {
-		List<Artista> artisti = this.artistaRepository.findByNomeAndCognome(artista.getNome(),artista.getCognome());
-		if (artisti.size() > 0)
+		Optional<Artista> artisti = this.artistaRepository.findByNomeAndCognome(artista.getNome(),artista.getCognome());
+		if (artisti.isPresent())
 			return true;
 		else 
 			return false;
+	}
+	
+	@Transactional
+	 public Artista artistaPerCognome(String oggettoDaCercare) {
+		Optional<Artista> optional = artistaRepository.findByCognome(oggettoDaCercare);
+		if (optional.isPresent())
+			return optional.get();
+		else 
+			return null;
+	}
+
+	@Transactional
+	public boolean alreadyExistsByCognome(String oggettoDaCercare) {
+		Optional<Artista> artisti = this.artistaRepository.findByNome(oggettoDaCercare);
+		if (artisti.isPresent())
+			return true;
+		else 
+			return false;
+	
+	}
+	
+	@Transactional
+	public Artista artistaPerNome(String oggettoDaCercare) {
+		Optional<Artista> artisti = this.artistaRepository.findByNome(oggettoDaCercare);
+		if (artisti.isPresent())
+			return artisti.get();
+		else 
+			return null;
+
+	}
+
+	@Transactional
+	public boolean alreadyExistsByNome(String oggettoDaCercare) {
+		Optional<Artista> artisti = this.artistaRepository.findByNome(oggettoDaCercare);
+		if (artisti.isPresent())
+			return true;
+		else 
+			return false;
+	}
+
+	public Artista artistaPerNomeECognome(String nome, String cognome) {
+		Optional<Artista> optional = this.artistaRepository.findByNomeAndCognome("nome","cognome");
+		if (optional.isPresent())
+			return optional.get();
+		else 
+			return null;
+
 	}
 }

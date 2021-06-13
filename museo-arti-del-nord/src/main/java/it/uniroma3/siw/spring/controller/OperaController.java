@@ -50,10 +50,23 @@ public class OperaController {
 		return "opera";
 	}
 
+	@RequestMapping(value = "/eliminaOpera/{id}", method = RequestMethod.POST)
+    public String eliminaOpera(@PathVariable("id") Long id, Model model) {
+    	this.operaService.elimina(this.operaService.operaPerId(id));
+    	model.addAttribute("opere", this.operaService.tutti());
+    	return "/admin/opere";
+    }
+	
 	@RequestMapping(value = "/opera", method = RequestMethod.GET)
 	public String getOpere(Model model) {
 		model.addAttribute("opere", this.operaService.tutti());
 		return "opere";
+	}
+	
+	@RequestMapping(value = "/admin/opere", method = RequestMethod.GET)
+	public String getOpereAdmin(Model model) {
+		model.addAttribute("opere", this.operaService.tutti());
+		return "/admin/opere";
 	}
 
 	@RequestMapping(value = "/admin/opera", method = RequestMethod.POST)
@@ -70,4 +83,7 @@ public class OperaController {
 		}
 		return "operaForm";
 	}
+	
+	
+	
 }

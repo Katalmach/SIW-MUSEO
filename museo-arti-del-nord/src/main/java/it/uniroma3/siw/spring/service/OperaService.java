@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import it.uniroma3.siw.spring.model.Artista;
 import it.uniroma3.siw.spring.model.Collezione;
 import it.uniroma3.siw.spring.model.Opera;
 import it.uniroma3.siw.spring.repository.OperaRepository;
@@ -42,22 +43,49 @@ public class OperaService {
 
 	@Transactional
 	public boolean alreadyExists(Opera opera) {
-		List<Opera> opere = this.operaRepository.findByTitolo(opera.getTitolo());
-		if (opere.size() > 0)
+		Optional<Opera> opere = this.operaRepository.findByTitolo(opera.getTitolo());
+		if (opere.isPresent())
 			return true;
 		else 
 			return false;
 	}
 	
+	@Transactional
 	public void elimina(Opera opera) {
 		operaRepository.delete(opera);
 	}
 
-	public List<Opera> operaPerCollezione(Collezione collezione) {
-		List<Opera> opere = operaRepository.findByCollezione(collezione);
-		if (opere!=null)
-			return opere;
+	@Transactional
+	public Opera operaPerCollezione(Collezione collezione) {
+		Optional<Opera> opere = operaRepository.findByCollezione(collezione);
+		if (opere.isPresent())
+			return opere.get();
 		else 
 			return null;
+	}
+
+	@Transactional
+	public boolean alreadyExistsByTitolo(String nomeOpera) {
+		Optional<Opera> opere = this.operaRepository.findByTitolo(nomeOpera);
+		if (opere.isPresent())
+			return true;
+		else 
+			return false;
+		
+	}
+
+	public Opera operaPerTitolo(String nomeOpera) {
+		Optional<Opera> optional = operaRepository.findByTitolo(nomeOpera);
+		if (optional.isPresent())
+			return optional.get();
+		else 
+			return null;
+	}
+
+	public Optional<Opera> operePerArtista(Artista artistaPerNomeECognome) {
+		Optional<Opera> opere = operaRepository.findByArtista(artistaPerNomeECognome);
+		if(opere.isPresent())
+			return opere;
+		return null;
 	}
 }

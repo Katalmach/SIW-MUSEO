@@ -8,20 +8,17 @@
 <body>
 	<header  th:fragment ="intestazione">
 				
-		<span id="titolo"> Museo Ferrante Rittatore Von Willer </span>
+		<span id="titolo"> Museo Ferrante Rittatore Von Willer 
+		</span>
 			<ul id="ulBase">
-			<li><a href="/about.html">Chi siamo</a></li>
-			<li><a href="/artista">Artisti</a></li>
-			<li><a href="/collezione">Collezioni</a></li>
-			<li><a href="/default">Home</a></li>
-			
+			<li><a th:href="@{/about}">Chi siamo</a></li>
+			<li><a th:href="@{/artista}">Artisti</a></li>
+			<li><a th:href="@{/collezione}">Collezioni</a></li>
+			<li><a th:href="@{/default}">Home</a></li>
+			<li><a th:href="@{/login}">Login</a><li>
+			<li><a th:href="@{/logout}">Logout</a></li>
 		</ul>
 	</header>	
-	<p>Go to the next page to see fragments in action</p>
-	<aside>
-		<div>This is a sidebar</div>
-	</aside>
-	<div class="another">This is another sidebar</div>
 	
 	<footer th:fragment="fondo(home)">
 		<div id="divFooter">2021 <a id="foot" th:href="@{${home}}">Museo di
