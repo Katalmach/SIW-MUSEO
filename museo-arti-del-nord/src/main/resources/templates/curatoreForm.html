@@ -4,14 +4,13 @@
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
-		
+		<h4>Inserisci i dati di un curatore</h4>
 	</div>
 	<form th:action="@{/admin/curatore}" method="POST" th:object="${curatore}">
 		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>		
-		<div id="divForm2">
-			<h4>Inserisci i dati di un curatore</h4>
+		<div>
 			<div>
 				<span>Nome: </span>
 				<span><input type="text" th:field="*{nome}" /></span>
@@ -21,6 +20,18 @@
 				<span>Cognome: </span>
 				<span><input type="text" th:field="*{cognome}" /></span>
 				<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+			</div>
+			
+			<div>
+				<span>Data di nascita: </span>
+				<span><input type="date" th:field="*{dataDiNascita}" /></span>
+				<span th:if="${#fields.hasErrors('dataDiNascita')}" th:errors="*{dataDiNascita}"></span>
+			</div>
+			
+			<div>
+				<span>Luogo di nascita: </span>
+				<span><input type="text" th:field="*{luogoDiNascita}" /></span>
+				<span th:if="${#fields.hasErrors('luogoDiNascita')}" th:errors="*{luogoDiNascita}"></span>
 			</div>
 			
 			<div>

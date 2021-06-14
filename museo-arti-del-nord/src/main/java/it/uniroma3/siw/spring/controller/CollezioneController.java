@@ -22,6 +22,7 @@ import it.uniroma3.siw.spring.service.OperaService;
 @Controller
 public class CollezioneController {
 	
+	
 	@Autowired
 	private CollezioneService collezioneService;
 	
@@ -47,7 +48,15 @@ public class CollezioneController {
     @RequestMapping(value = "/collezione/{id}", method = RequestMethod.GET)
     public String getCollezione(@PathVariable("id") Long id, Model model) {
     	model.addAttribute("collezione", this.collezioneService.collezionePerId(id));
-    	model.addAttribute("opere", this.operaService.operaPerCollezione(this.collezioneService.collezionePerId(id)));
+    	model.addAttribute("opere", this.operaService.operePerCollezione(this.collezioneService.collezionePerId(id)));
+    	model.addAttribute("artisti", this.artistaService.tutti());
+    	return "collezione";
+    }
+    
+    @RequestMapping(value = "/admin/collezione/{id}", method = RequestMethod.GET)
+    public String getCollezioneAdmin(@PathVariable("id") Long id, Model model) {
+    	model.addAttribute("collezione", this.collezioneService.collezionePerId(id));
+    	model.addAttribute("opere", this.operaService.operePerCollezione(this.collezioneService.collezionePerId(id)));
     	model.addAttribute("artisti", this.artistaService.tutti());
     	return "collezione";
     }
@@ -56,8 +65,6 @@ public class CollezioneController {
     public String eliminaOperaDaCollezione(@PathVariable("id") Long id, Model model) {
     	Long idCollezione= this.operaService.operaPerId(id).getCollezione().getId();
     	model.addAttribute("collezione", this.collezioneService.collezionePerId(idCollezione));
-    	
-    	this.operaService.operaPerId(id).setArtista(null);
     	this.operaService.elimina(this.operaService.operaPerId(id));
     	return "collezione";
     }
@@ -94,6 +101,22 @@ public class CollezioneController {
         }
         return "collezioneForm";
     }
+    
+    
+	@RequestMapping(value = "/collezioneSortedByAnno/{id}", method = RequestMethod.GET)
+	public String getOperePerAnno(@PathVariable("id") Long id, Model model) {
+		Collezione collezione = this.collezioneService.collezionePerId(id);
+		collezione.setOpere(this.operaService.operePerAnno(collezione));
+		model.addAttribute("collezione", collezione);
+		return "collezione";
+	}
 
+	@RequestMapping(value = "/collezioneSortedByArtista/{id}", method = RequestMethod.GET)
+	public String getOperePerArtista(@PathVariable("id") Long id, Model model) {
+		Collezione collezione = this.collezioneService.collezionePerId(id);
+		collezione.setOpere(this.operaService.operePerArtista(collezione));
+		model.addAttribute("collezione", collezione);
+		return "collezione";
+	}
 }
 

@@ -52,14 +52,16 @@ public class CollezioneService {
 	}
 
 	@Transactional
-	public Object collezionePerNome(String oggettoDaCercare) {
+	public Collezione collezionePerNome(String oggettoDaCercare) {
 		Optional<Collezione> collezioni = collezioneRepository.findByNome(oggettoDaCercare);
 		if (collezioni.isPresent())
-			return collezioni;
+			return collezioni.get();
 		else 
-			return null;
-		
+			return null;	
 	}
+	
+	
+	
 
 	public boolean alreadyExistsByNome(String oggettoDaCercare) {
 		Optional<Collezione> collezioni = this.collezioneRepository.findByNome(oggettoDaCercare);
@@ -68,4 +70,5 @@ public class CollezioneService {
 		else 
 			return false;
 	}
+
 }

@@ -6,8 +6,10 @@
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
-		<h4 th:text="#{header.registra}">Registrazione</h4>
+		
 		<form th:action="@{/register}" method="POST">
+			<div id="registerForm">
+			<h4 th:text="#{header.registra}">Registrazione</h4>
 			<table>
 				<tr class="form-size">
 					<td>Nome</td>
@@ -39,7 +41,7 @@
 				</tr>
 				<tr class="form-size">
 					<td>e-mail</td>
-					<td><input type="text" placeholder="email" required
+					<td><input type="text" placeholder="e-mail" required
 						th:field="${user.email}" /></td>
 					<td th:if="${#fields.hasErrors('user.email')}"
 						th:errors="${user.email}" th:style="'color:red'"></td>
@@ -51,6 +53,7 @@
 					</td>
 				</tr>
 			</table>
+			</div>
 		</form>
 	</div>
 	<footer th:replace="fragments/base.html :: fondo(home='/')"></footer>

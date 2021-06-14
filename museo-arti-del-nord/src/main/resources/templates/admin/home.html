@@ -4,8 +4,8 @@
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
    
-    <div>
-    	<h4 th:text="#{header.menuAdmin}">Menu</h4>
+    <div id="divForm" style="align-items:center;">
+    	<h4 style="font-size:45px;" th:text="#{header.menuAdmin}">Menu</h4>
 		
 		<div>
 			<a th:href="@{/admin/artisti}">Elenco artisti</a>

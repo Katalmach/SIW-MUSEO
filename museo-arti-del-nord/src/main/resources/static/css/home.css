@@ -45,7 +45,7 @@ header {
 }
 
 .form-size {
-	font-size: 50%;
+	font-size: 80%;
 }
 
 .artista-size {
@@ -114,19 +114,12 @@ header {
 }
 
 a {
-	text-decoration: none;
 	font-weight: bold;
 	font-family: Gill sans, serif;
 }
 
-a:hover {
-	color: lightgrey;
-	text-decoration: underline;
-}
 
-a:visited {
-	
-}
+
 
 #nome-museo {
 	height: .5em;
@@ -220,9 +213,14 @@ footer a:hover {
 
 #loginForm {
 	display: flex;
-	flex-direction: column;
+	justify-content:center;
 	align-items: center;
-	justify-content: center;
+	text-align:center;
+	
+}
+
+#loginForm a{
+	text-decoration: none;
 }
 
 #divForm {
@@ -235,6 +233,12 @@ footer a:hover {
 	font-size: 20px;
 	color: beige;
 	align-items: stretch;	
+ 
+}
+
+#divForm a{
+	color:beige;
+	font-size:30px;
 }
 
 
@@ -258,11 +262,13 @@ footer a:hover {
 #divForm2 {
 	display: flex;
 	flex-direction: column;
-	text-indent: 3em;
-	padding: 3em;
+	padding: 150px;
 	background-color: #7b002c;
-	margin-top: 7%;
-	margin-bottom: 5%;
+	margin-bottom:15px;
+	margin-top:25px;
+	margin-left:25px;
+	margin-right:25px;
+	
 	font-size: 20px;
 	align-items: justify;
 	color: beige;
@@ -397,12 +403,60 @@ footer a:hover {
 #divForm3{
 		display: flex;
 	flex-direction: column;
-	text-indent: 3em;
-	padding: 3em;
+	align-items:center;
+	padding: 100px;
 	background-color: #7b002c;
-	margin-top: 7%;
-	margin-bottom: 5%;
-	font-size: 20px;
+	margin:30px;
+	font-size: 30px;
 	align-items: justify;
 	color: beige;
+}
+
+#divForm3 a{
+	font-size: 40px;
+	color: beige;
+	text-decoration: none;
+}
+
+#divForm3 a:hover{
+	color: beige;
+	text-decoration: underline;
+	
+}
+
+#divForm3 a:visited{
+	color: beige;
+}
+
+#registerForm {
+	display: flex;
+	align-items:center;
+	flex-direction: column;
+	padding: 100px;
+	background-color: #7b002c;
+	margin:30px;
+	font-size: 20px;
+	color: beige;
+}
+
+
+#registerForm input {
+	background-color: beige;
+	display:inline;
+}
+
+
+#registerForm button {
+	text-decoration: none;
+	color: #7b002c;
+	font-size: 15px;
+	background-color: beige;
+}
+
+#registerForm button:hover {
+	opacity: 0.8
+}
+
+a{
+	text-decoration: none; 
 }

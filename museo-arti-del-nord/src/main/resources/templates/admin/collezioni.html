@@ -11,7 +11,7 @@
 		<ul>
 			<li id="liPerGets" th:each="collezione : ${collezioni}"><a
 				href="collezione.html"
-				th:href="@{'/collezione' + '/' + ${collezione.id}}"
+				th:href="@{'/admin/collezione' + '/' + ${collezione.id}}"
 				th:text="${collezione.nome}"></a>
 
 

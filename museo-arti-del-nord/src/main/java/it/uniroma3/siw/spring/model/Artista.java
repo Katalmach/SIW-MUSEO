@@ -158,5 +158,10 @@ public class Artista {
 	public void setBiografia(String biografia) {
 		this.biografia = biografia;
 	}
+
+	public int compareTo(Artista artista) {
+		
+		return 0;
+	}
 	
 }

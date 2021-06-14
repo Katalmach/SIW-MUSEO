@@ -56,10 +56,10 @@ public class OperaService {
 	}
 
 	@Transactional
-	public Opera operaPerCollezione(Collezione collezione) {
-		Optional<Opera> opere = operaRepository.findByCollezione(collezione);
-		if (opere.isPresent())
-			return opere.get();
+	public List<Opera> operePerCollezione(Collezione collezione) {
+		List<Opera> opere = operaRepository.findByCollezione(collezione);
+		if (opere.size()>0)
+			return opere;
 		else 
 			return null;
 	}
@@ -81,11 +81,26 @@ public class OperaService {
 		else 
 			return null;
 	}
-
-	public Optional<Opera> operePerArtista(Artista artistaPerNomeECognome) {
-		Optional<Opera> opere = operaRepository.findByArtista(artistaPerNomeECognome);
-		if(opere.isPresent())
+	
+	public List<Opera> operePerArtista(Collezione collezione) {
+		List<Opera> opere = this.operaRepository.findByCollezioneOrderByNomeAndCognome(collezione);
+		if(opere.size()>0)
 			return opere;
 		return null;
 	}
-}
+	 
+	/** 
+	 * 
+	 * @param collezione
+	 * @return opere per collezione ordinate per anno
+	 */
+	public List<Opera> operePerAnno(Collezione collezione) {
+		List<Opera> opere= (List<Opera>) this.operaRepository.findByCollezioneOrderByAnno(collezione);
+		if(opere.size()>0)
+			return opere;
+		return null;
+	}
+
+
+	}
+

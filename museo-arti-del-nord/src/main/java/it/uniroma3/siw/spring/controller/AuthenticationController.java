@@ -58,7 +58,7 @@ public class AuthenticationController {
     	if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
     		return "admin/home";
     	}
-    	model.addAttribute("opere", this.operaService.operePerArtista(this.artistaService.artistaPerNomeECognome("Vincent", "Van Gogh")));
+    	//model.addAttribute("opere", this.operaService.operePerArtista(this.artistaService.artistaPerNomeECognome("Vincent", "Van Gogh")));
         return "home";
     }
 	

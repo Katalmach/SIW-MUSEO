@@ -45,12 +45,6 @@ public class ArtistaController {
     	return "artista";
     }
     
-    @RequestMapping(value = "/deleteArtista/{id}", method = RequestMethod.POST)
-    public String deleteArtista(@PathVariable("id") Long id, Model model) {
-    	this.artistaService.elimina(this.artistaService.artistaPerId(id));
-    	model.addAttribute("artisti", this.artistaService.tutti());
-    	return "artisti";
-    }
 
     @RequestMapping(value = "/admin/artisti", method = RequestMethod.GET)
     public String getArtistiAdmin(Model model) {

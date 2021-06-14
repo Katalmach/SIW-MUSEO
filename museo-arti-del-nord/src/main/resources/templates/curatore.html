@@ -8,20 +8,26 @@
     	
     	<div th:if="${curatore}" th:object="${curatore}">
 			
-				<div style="text-indent:4em;">
+				<div>
 			<span th:text="*{nome}"></span>
 
 			<span th:text="*{cognome}"> </span>
 			</div>
+			<div>Data di Nascita:  
+			<span th:text="*{dataDiNascita}"> </span>
+			</div>
+			<div>Luogo di nascita:
+			<span th:text="*{luogoDiNascita}"> </span>
+			</div>
 			<div>E-mail:  
 			<span th:text="*{email}"> </span>
 			</div>
-			<div>Tel.:
+			<div>Telefono:
 			<span th:text="*{numeroDiTelefono}"> </span>
 			</div>
 			
    		</div>
-    	<div th:unless="${curatore}">Questo curatore non esiste</div>
+    	<div th:unless="${curatore}">Quest'opera non esiste</div>
     </div>
     <footer th:replace="fragments/base.html :: fondo('/default')"></footer>
 </body>

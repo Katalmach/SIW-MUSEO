@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"nome","cognome","email"}))
 public class Curatore {
@@ -32,7 +34,31 @@ public class Curatore {
 	
 	@Column(nullable = false, unique = true)
 	private String numeroDiTelefono;
+
+	@Column(nullable = false)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	  private LocalDate dataDiNascita;
+	  
+	  @Column(nullable = false)
+	  private String luogoDiNascita;
 	
+	public LocalDate getDataDiNascita() {
+		return dataDiNascita;
+	}
+
+	public void setDataDiNascita(LocalDate dataDiNascita) {
+		this.dataDiNascita = dataDiNascita;
+	}
+
+	public String getLuogoDiNascita() {
+		return luogoDiNascita;
+	}
+
+	public void setLuogoDiNascita(String luogoDiNascita) {
+		this.luogoDiNascita = luogoDiNascita;
+	}
+
+
 	// associazioni
 	@OneToMany(mappedBy = "curatore")
 	private List<Collezione> collezioni;
