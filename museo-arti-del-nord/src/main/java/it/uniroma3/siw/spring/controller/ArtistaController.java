@@ -23,6 +23,7 @@ public class ArtistaController {
 	
     @Autowired
     private ArtistaValidator artistaValidator;
+
         
     @RequestMapping(value="/admin/artista", method = RequestMethod.GET)
     public String addArtista(Model model) {
@@ -69,4 +70,24 @@ public class ArtistaController {
         }
         return "artistaForm";
     }
+    
+	@RequestMapping(value = "/admin/modificaArtista/{id}", method = RequestMethod.POST)
+	public String modificaArtista(@PathVariable("id")Long id,@ModelAttribute("artista") Artista artista,
+			Model model, BindingResult bindingResult) {
+		this.artistaService.elimina(artista);
+		this.artistaValidator.validate(artista, bindingResult);
+		if(!bindingResult.hasErrors()) {
+			this.artistaService.inserisci(artista);
+			model.addAttribute("artisti", this.artistaService.tutti());
+			return "/admin/artisti";
+		}
+		return "/admin/modificaArtista";
+	}
+
+	@RequestMapping(value="/admin/modificaArtista/{id}", method = RequestMethod.GET)
+	public String modificaArtista(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("artista", this.artistaService.artistaPerId(id));
+		model.addAttribute("artisti", this.artistaService.tutti());
+		return "/admin/modificaArtista";
+	}
 }

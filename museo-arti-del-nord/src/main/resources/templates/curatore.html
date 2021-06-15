@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.curatore})"> </head>
+<head
+	th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.curatore})">
+</head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
-    <div>
-    	<h4 th:text="#{header.curatore}">...</h4>
-    	
-    	<div th:if="${curatore}" th:object="${curatore}">
-			
-				<div>
-			<span th:text="*{nome}"></span>
+	<div>
+		<h4 th:text="#{header.curatore}">...</h4>
 
-			<span th:text="*{cognome}"> </span>
+		<div th:if="${curatore}" th:object="${curatore}">
+
+			<div>
+				<span th:text="*{nome}"></span> <span th:text="*{cognome}"> </span>
 			</div>
-			<div>Data di Nascita:  
-			<span th:text="*{dataDiNascita}"> </span>
+			<div>
+				Data di Nascita: <span th:text="*{dataDiNascita}"> </span>
 			</div>
-			<div>Luogo di nascita:
-			<span th:text="*{luogoDiNascita}"> </span>
+			<div>
+				Luogo di nascita: <span th:text="*{luogoDiNascita}"> </span>
 			</div>
-			<div>E-mail:  
-			<span th:text="*{email}"> </span>
+			<div>
+				E-mail: <span th:text="*{email}"> </span>
 			</div>
-			<div>Telefono:
-			<span th:text="*{numeroDiTelefono}"> </span>
+			<div>
+				Telefono: <span th:text="*{numeroDiTelefono}"> </span>
 			</div>
-			
-   		</div>
-    	<div th:unless="${curatore}">Quest'opera non esiste</div>
-    </div>
-    <footer th:replace="fragments/base.html :: fondo('/default')"></footer>
+
+		</div>
+		<div th:unless="${curatore}">Quest'opera non esiste</div>
+	</div>
+	<footer th:replace="fragments/base.html :: fondo('/default')"></footer>
 </body>
 </html>

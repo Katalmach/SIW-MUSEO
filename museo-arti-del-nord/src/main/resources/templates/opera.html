@@ -4,24 +4,23 @@
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
     <div>
-    	<div id="divDescPage" th:if="${opera}" th:object="${opera}">
-    <div>
-			<span style="font-size: 5vw;" th:text="*{Titolo}"></span>
-
+    	<div style="color:#7b002c; text-indent:-1em;"  id="divDescPage" th:if="${opera}" th:object="${opera}">
+    		<div style="margin-bottom: 40px;">
+				<span style="font-size: 4vw; " th:text="*{Titolo}"></span>
 			</div>
-			<div style="font-size: 3vw;">Autore: 
-			<a style="font-size: 2vw; color: black;" th:href="@{'/artista' + '/' + ${opera.artista.id}}" 
-				   th:text="|${opera.artista.nome} &nbsp; ${opera.artista.cognome}|"></a>
+			<div style="font-size: 2vw;">Autore: 
+			<a style="font-size: 2vw; color: #be000f;" th:href="@{'/artista' + '/' + ${opera.artista.id}}" 
+				   th:text="|${opera.artista.nome}&nbsp;${opera.artista.cognome}|"></a>
 			</div>
-			<div style="font-size: 3vw;">Anno di pubblicazione : 
+			<div style="font-size: 2vw;">Anno di pubblicazione: 
 			<span th:text="*{anno}"> </span>
 			</div>
-			<div id="margin-opera" style="font-size: 3vw;">Descrizione:
+			<div id="margin-opera" style="font-size: 2vw; margin-right:50px;">Descrizione:
 			<span th:text="*{descrizione}"> </span>
 			</div>
 			
 			<img id="img-opera" th:src="@{'/images' + '/' + ${opera.image}}">
-			
+		
 			</div>
 			
    		</div>

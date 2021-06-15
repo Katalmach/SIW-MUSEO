@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head
-	th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.collezione})">
+	th:replace="fragments/base.html :: headerfiles(title=#{title.collezione})">
 </head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
@@ -14,7 +14,7 @@
 			</div>
 
 			<div id="desc-collezione">
-				<span th:text="*{descrizione}"></span>
+				<span  th:text="*{descrizione}"></span>
 			</div>
 
 			<div id="desc-curatore">
@@ -34,7 +34,7 @@
 					<form id="btnElimina"
 						th:action="@{'/eliminaOperaDaCollezione/{id}'(id=${opera.id})}" method="POST"
 						th:object="${opera}">
-						<input type="hidde	" name="_method" value="delete" />
+						<input type="hidden	" name="_method" value="delete" />
 						<button type="submit" value="Submit">Elimina</button>
 					</form>
 					<form id="btnElimina"

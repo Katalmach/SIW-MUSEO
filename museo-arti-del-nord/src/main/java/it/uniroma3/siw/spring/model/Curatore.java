@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import org.springframework.format.annotation.DateTimeFormat;
+//import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"nome","cognome","email"}))
@@ -29,36 +29,19 @@ public class Curatore {
 	@Column(nullable = false)
 	private String cognome;
 	
+	/*@Column(nullable = false)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private LocalDate dataDiNascita;
+	
+	@Column(nullable = false)
+	private String luogoDiNascita;*/
+	
 	@Column(nullable = false, unique = true)
 	private String email;
 	
 	@Column(nullable = false, unique = true)
 	private String numeroDiTelefono;
-
-	@Column(nullable = false)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	  private LocalDate dataDiNascita;
-	  
-	  @Column(nullable = false)
-	  private String luogoDiNascita;
 	
-	public LocalDate getDataDiNascita() {
-		return dataDiNascita;
-	}
-
-	public void setDataDiNascita(LocalDate dataDiNascita) {
-		this.dataDiNascita = dataDiNascita;
-	}
-
-	public String getLuogoDiNascita() {
-		return luogoDiNascita;
-	}
-
-	public void setLuogoDiNascita(String luogoDiNascita) {
-		this.luogoDiNascita = luogoDiNascita;
-	}
-
-
 	// associazioni
 	@OneToMany(mappedBy = "curatore")
 	private List<Collezione> collezioni;
@@ -67,6 +50,22 @@ public class Curatore {
 	public Curatore() {
 	}
 	
+//	public LocalDate getDataDiNascita() {
+//		return dataDiNascita;
+//	}
+//
+//	public void setDataDiNascita(LocalDate dataDiNascita) {
+//		this.dataDiNascita = dataDiNascita;
+//	}
+//
+//	public String getLuogoDiNascita() {
+//		return luogoDiNascita;
+//	}
+//
+//	public void setLuogoDiNascita(String luogoDiNascita) {
+//		this.luogoDiNascita = luogoDiNascita;
+//	}
+
 	public Curatore(String nome, String cognome, LocalDate dataDiNascita, String luogoDiNascita,
 			String email, String numeroDiTelefono) {
 		
@@ -101,8 +100,6 @@ public class Curatore {
 		this.cognome = cognome;
 	}
 
-	
-
 	public String getEmail() {
 		return email;
 	}
@@ -134,15 +131,4 @@ public class Curatore {
 		return "Curatore [matricola=" + id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", numeroDiTelefono="
 				+ numeroDiTelefono + "]";
 	}	
-	
-	public int hashCode() {
-		// TODO Auto-generated method stub
-		return super.hashCode();
-	}
-
-	
-	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
-		return super.equals(obj);
-	}
 }

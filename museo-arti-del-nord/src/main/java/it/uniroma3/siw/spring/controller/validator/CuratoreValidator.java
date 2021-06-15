@@ -31,7 +31,7 @@ public class CuratoreValidator implements Validator {
 			logger.debug("confermato: valori non nulli");
 			if (this.curatoreService.alreadyExists((Curatore)o)) {
 				logger.debug("e' un duplicato");
-				errors.reject("duplicato");
+				errors.reject("curatore.duplicato");
 			}
 		}
 	}

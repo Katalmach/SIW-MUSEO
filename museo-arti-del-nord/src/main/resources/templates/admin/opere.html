@@ -20,9 +20,9 @@
 					<button type="submit" value="Submit">Elimina</button>
 				</form>
 				<form id="btnElimina"
-					th:action="@{'/modificaOpera/{id}'(id=${opera.id})}"
-					method="POST" th:object="${opera}">
-					<input type="hidden" name="_method" value="delete" />
+					th:action="@{'/admin/modificaOpera/{id}'(id=${opera.id})}"
+					method="GET" th:object="${opera}">
+					<input type="hidden" name="_method" value="update" />
 					<button type="submit" value="Submit">Modifica</button>
 				</form>
 		</ul>

@@ -6,9 +6,9 @@
 	<title th:text="${title}"></title>
 </head>
 <body>
-	<header  th:fragment ="intestazione">
-				
-		<span id="titolo"> Museo Ferrante Rittatore Von Willer 
+	<header id="baseHeader" th:fragment ="intestazione">
+		<span id="titolo"> <img style="width:4%; border-radius:0%; height:3%;"th:src="@{/images/giglio.jpg}"/>	
+		Museo Ferrante Rittatore Von Willer 
 		</span>
 			<ul id="ulBase">
 			<li><a th:href="@{/about}">Chi siamo</a></li>

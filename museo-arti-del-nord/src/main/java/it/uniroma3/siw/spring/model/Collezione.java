@@ -28,8 +28,7 @@ public class Collezione {
 	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Curatore curatore;
 	
-	
-	@OneToMany(mappedBy = "collezione")
+	@OneToMany(mappedBy = "collezione", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	private List<Opera> opere;
 
 	// costruttori
@@ -84,13 +83,13 @@ public class Collezione {
 		this.opere = opere;
 	}
 	public int hashCode() {
-		// TODO Auto-generated method stub
+		
 		return super.hashCode();
 	}
 
 	
 	public boolean equals(Object obj) {
-		// TODO Auto-generated method stub
+		
 		return super.equals(obj);
 	}
 }

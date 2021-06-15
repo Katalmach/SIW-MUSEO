@@ -23,7 +23,6 @@ public class OperaService {
 	
 	@Transactional
 	public Opera inserisci(Opera opera) {
-		
 		return operaRepository.save(opera);
 	}
 
@@ -100,6 +99,8 @@ public class OperaService {
 			return opere;
 		return null;
 	}
+
+
 
 
 	}

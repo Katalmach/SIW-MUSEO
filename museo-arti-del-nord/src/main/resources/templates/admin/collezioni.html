@@ -22,9 +22,9 @@
 					<button type="submit" value="Submit">Elimina</button>
 				</form>
 				<form id="btnElimina"
-					th:action="@{'/modificaCollezione/{id}'(id=${collezione.id})}"
-					method="POST" th:object="${collezione}">
-					<input type="hidden" name="_method" value="delete" />
+					th:action="@{'/admin/modificaCollezione/{id}'(id=${collezione.id})}"
+					method="GET" th:object="${collezione}">
+					<input type="hidden" name="_method" value="update" />
 					<button type="submit" value="Submit">Modifica</button>
 				</form></li>
 		</ul>

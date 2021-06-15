@@ -21,8 +21,8 @@ import it.uniroma3.siw.spring.service.OperaService;
 @Controller
 public class OperaController {
 
-	 
-	
+
+
 	@Autowired	
 	private ArtistaService artistaService;
 
@@ -35,14 +35,14 @@ public class OperaController {
 	@Autowired
 	private CollezioneService collezioneService;
 
-	
+
 
 	@RequestMapping(value="/admin/opera", method = RequestMethod.GET)
 	public String addOpera(Model model) {
 		model.addAttribute("opera", new Opera());
 		model.addAttribute("artisti", this.artistaService.tutti());
 		model.addAttribute("collezioni", this.collezioneService.tutti());
-		
+
 		return "operaForm";
 	}
 
@@ -53,18 +53,18 @@ public class OperaController {
 	}
 
 	@RequestMapping(value = "/eliminaOpera/{id}", method = RequestMethod.POST)
-    public String eliminaOpera(@PathVariable("id") Long id, Model model) {
-    	this.operaService.elimina(this.operaService.operaPerId(id));
-    	model.addAttribute("opere", this.operaService.tutti());
-    	return "/admin/opere";
-    }
-	
+	public String eliminaOpera(@PathVariable("id") Long id, Model model) {
+		this.operaService.elimina(this.operaService.operaPerId(id));
+		model.addAttribute("opere", this.operaService.tutti());
+		return "/admin/opere";
+	}
+
 	@RequestMapping(value = "/opera", method = RequestMethod.GET)
 	public String getOpere(Model model) {
 		model.addAttribute("opere", this.operaService.tutti());
 		return "opere";
 	}
-	
+
 	@RequestMapping(value = "/admin/opere", method = RequestMethod.GET)
 	public String getOpereAdmin(Model model) {
 		model.addAttribute("opere", this.operaService.tutti());
@@ -73,7 +73,7 @@ public class OperaController {
 
 	@RequestMapping(value = "/admin/opera", method = RequestMethod.POST)
 	public String addOpera(@RequestParam Long artistaSelezionato,
-							@RequestParam Long collezioneSelezionata,
+			@RequestParam Long collezioneSelezionata,
 			@ModelAttribute("opera") Opera opera, Model model, BindingResult bindingResult) {
 		this.operaValidator.validate(opera, bindingResult);
 		if(!bindingResult.hasErrors()) {
@@ -85,10 +85,29 @@ public class OperaController {
 		}
 		return "operaForm";
 	}
-	
 
-	
-	
-	
-	
+	@RequestMapping(value = "/admin/modificaOpera/{id}", method = RequestMethod.POST)
+	public String modificaOpera(@PathVariable("id")Long id,@ModelAttribute("opera") Opera opera,@RequestParam Long artistaSelezionato,
+			@RequestParam Long collezioneSelezionata, Model model, BindingResult bindingResult) {
+		this.operaService.elimina(opera);
+		this.operaValidator.validate(opera, bindingResult);
+		if(!bindingResult.hasErrors()) {
+				opera.setArtista(this.artistaService.artistaPerId(artistaSelezionato));
+				opera.setCollezione(this.collezioneService.collezionePerId(collezioneSelezionata));
+			this.operaService.inserisci(opera);
+			model.addAttribute("opere", this.operaService.tutti());
+			return "/admin/opere";
+		}
+		return "/admin/modificaOpera";
+	}
+
+	@RequestMapping(value="/admin/modificaOpera/{id}", method = RequestMethod.GET)
+	public String modificaOpera(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("opera", this.operaService.operaPerId(id));
+		model.addAttribute("artisti", this.artistaService.tutti());
+		model.addAttribute("collezioni", this.collezioneService.tutti());
+
+		return "/admin/modificaOpera";
+	}
+
 }

@@ -1,46 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head
-	th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.collezione})">
+	th:replace="fragments/base.html :: headerfiles(title=#{title.collezione})">
 </head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
 
 		<div id="divDescPage" th:if="${collezione}" th:object="${collezione}">
-			<span><a th:href="@{'/collezioneSortedByAnno'+'/'+ ${collezione.id}}">Ordina per anno</a></span>
-			<span><a th:href="@{'/collezioneSortedByArtista'+'/'+ ${collezione.id}}">Ordina per artista</a></span>
-		
+			<div></div>
 			<div>
 				<span style="font-size: 5vw;" th:text="*{nome}"></span>
-						</div>
+			</div>
 
 			<div id="desc-collezione">
 				<span th:text="*{descrizione}"></span>
 			</div>
 
-			<div id="desc-curatore">
-				Curatore:&nbsp; <span th:text="*{curatore.nome}"> </span> &nbsp; <span
-					th:text="*{curatore.cognome}"> </span>
-			</div>
+			
 			<div id="opere-collezione">
 				Opere in collezione:&nbsp;
+			</div>
+			<div id="divOrdina">
+					<span>Ordina per:&nbsp;</span> <span><a style="color:#7b002c;"
+						th:href="@{'/collezioneSortedByAnno'+'/'+ ${collezione.id}}">anno</a></span>
+					<span>,&nbsp;</span>
+					<span><a style="color:#7b002c;"
+						th:href="@{'/collezioneSortedByArtista'+'/'+ ${collezione.id}}"> artista</a></span>
 				</div>
-				<ul id="listaCol">
-					<li style="font-size:35%;" th:each="opera : *{opere}"><a id="linkLista" href="opera.html"
-						th:href="@{'/opera' + '/' + ${opera.id}}"
-						th:text="${opera.titolo}"></a>
-						-&nbsp;
-						 <a id ="linkLista"
-						th:href="@{'/artista' + '/' + ${opera.artista.id}}"
-						th:text="|${opera.artista.nome}&nbsp;${opera.artista.cognome}|" ></a>
-						
-									<img id="img-opera" th:src="@{'/images' + '/' + ${opera.image}}">
-			
-						</li>
+			<ul id="listaCol">
+				<li style="font-size: 35%;" th:each="opera : *{opere}"><a
+					id="linkLista" href="opera.html"
+					th:href="@{'/opera' + '/' + ${opera.id}}" th:text="${opera.titolo}"></a>
+					-&nbsp; <a id="linkLista"
+					th:href="@{'/artista' + '/' + ${opera.artista.id}}"
+					th:text="|${opera.artista.nome}&nbsp;${opera.artista.cognome}|"></a>
+					<span th:text="'('+${opera.anno}+')'"></span>
 
-				</ul>
-			
+					<img id="img-opera" th:src="@{'/images' + '/' + ${opera.image}}">
+
+				</li>
+
+			</ul>
+			<div id="desc-curatore">
+				Curatore:&nbsp; <a style="color:#7b002c;" th:text="|*{curatore.nome}&nbsp;*{curatore.cognome}|" th:href="@{'/curatore' + '/' + *{curatore.id}}"></a> 
+				 
+			</div>
+
 		</div>
 		<div th:unless="${collezione}">Questa collezione non esiste</div>
 	</div>

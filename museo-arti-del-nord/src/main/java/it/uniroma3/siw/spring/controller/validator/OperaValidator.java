@@ -25,13 +25,16 @@ public class OperaValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "titolo", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "anno", "required");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descrizione", "required");
+		//problemi con modificaOpera
+		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "artista", "required");
+		
 	
 
 		if (!errors.hasErrors()) {
 			logger.debug("confermato: valori non nulli");
 			if (this.operaService.alreadyExists((Opera)o)) {
 				logger.debug("e' un duplicato");
-				errors.reject("duplicato");
+				errors.reject("opera.duplicato");
 			}
 		}
 	}

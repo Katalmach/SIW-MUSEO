@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head
-	th:replace="fragments/base.html :: headerfiles(title=#{title.operaForm})">
+	th:replace="fragments/base.html :: headerfiles(title=#{title.modificaOpera})">
 </head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 
-	<form id="loginForm" th:action="@{/admin/opera}" method="POST"
+	<form id="loginForm" th:action="@{'/admin/modificaOpera/{id}'(id=${opera.id})}" method="POST"
 		th:object="${opera}">
 		<div th:if="${#fields.hasGlobalErrors()}">
 			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>
 		<div id="divForm">
-			<h4>Inserisci i dati di un'opera:</h4>
+			<h4>Modifica i dati dell'opera:</h4>
 			<div>
 				<span>Titolo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
-					type="text" th:field="*{titolo}" /></span> <span
+					type="text" th:field="*{titolo}" placeholder="*{titolo}" /></span> <span
 					th:if="${#fields.hasErrors('titolo')}" th:errors="*{titolo}"></span>
 			</div>
 
 			<div>
 				<span>Anno pubblicazione:</span> <span><input type="text"
-					th:field="*{anno}" /></span>
-					 <span th:if="${#fields.hasErrors('anno')}"
-							th:errors="*{anno}"></span>
+					th:field="*{anno}" placeholder="*{anno}"/></span> <span th:if="${#fields.hasErrors('anno')}"
+					th:errors="*{anno}"></span>
 			</div>
 
 			<div>
@@ -41,24 +40,24 @@
 			<div>
 				<span>Collezione: </span><select name="collezioneSelezionata">
 					<option th:each="collezione : ${collezioni}"
-						th:value="${collezione.id}" th:text="${collezione.nome} "></option>
+						th:value="${collezione.id}" th:text="${collezione.nome}" placeholder="*{collezione.nome}"></option>
 				</select>
 			</div>
 
 
 			<div>
 				<span>Descrizione:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-				<span><input type="text" th:field="*{descrizione}" /></span> <span
+				<span><input type="text" th:field="*{descrizione}" placeholder="*{descrizione}"/></span> <span
 					th:if="${#fields.hasErrors('descrizione')}"
 					th:errors="*{descrizione}"></span>
 			</div>
 
 
 			<div>
-				<span><button type="submit">Invio</button></span>
+				<span><button type="submit">Modifica</button></span>
 			</div>
 		</div>
 	</form>
 	<footer th:replace="fragments/base.html :: fondo('/default')"></footer>
 </body>
-</html>
+</html> 
