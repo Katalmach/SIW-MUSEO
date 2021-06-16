@@ -4,7 +4,7 @@
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div id="divElenco">
-    	<h4 "th:text="#{header.artisti}"></h4>
+    	<h4 th:text="#{header.artisti}"></h4>
 		<ul>
 			<li th:each="artista : ${artisti}">
 				<a href="artista.html" 
@@ -13,7 +13,6 @@
 			
 			</li>
 		</ul>
-	</div>
 	</div>
 	<footer th:replace="fragments/base.html :: fondo('/default')"></footer>
 </body>
