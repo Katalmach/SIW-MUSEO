@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/base.html :: headerfiles(title='Museo Vonwiller Farnese')">
+</head>
+<meta charset="UTF-8" />
+<link th:href="@{/css/home.css}" rel="stylesheet">
+<title th:text="${title}"></title>
+</head>
+<body style="align-items: center">
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div style="display:flex; justify-content:center;">
+	<img style="width:960px; height:540px; border-radius:2%;"th:src="@{/images/entrata_museo.jpg}">
+	</div>
+	<div style=" display:flex; padding:50px; flex-direction:column; text-align:center; font-size:25px; margin:30px;">
+		<div >Qui potrete trovare tutte le informazioni per conoscere
+			il Museo e per preparare la vostra visita. Il MuRV è ubicato nella
+			splendida cittadina di Farnese, ai confini con la Toscana, in una
+			zona ricca di antichi insediamenti.
+			</div><div style="margin-top:50px;"> Istituito nel 1988, la prima sede
+			del MuRV è stata lo storico Palazzo Chigi, attualmente sede del
+			Municipio; in seguito, nel 2002, il museo è stato trasferito e
+			riallestito presso i Magazzini dell’Ammasso, un antico deposito
+			comunale di grano.</div>
+	</div>
+
+	<div id="imagesRow">
+		<div id="imagesColumn">
+			<div>
+				<img th:src="@{/images/Autoritratto-VanGogh.jpg}" /> <span>Autoritratto
+					- Van Gogh</span> <span>(1889)</span>
+			</div>
+			<div>
+				<img th:src="@{/images/le_muse_inquietanti-de_chirico.jpg}" /> <span>Le
+					muse inquietanti - de Chirico</span> <span>(1917-1919)</span>
+			</div>
+			<div style="margin-bottom: 0px;">
+				<img th:src="@{/images/Lattaia-Vermeer.jpg}" /> <span>Lattaia
+					- Vermeer</span> <span>(1658-1660)</span>
+			</div>
+		</div>
+		<div style="border: none;" id="imagesColumn">
+			<div>
+				<img th:src="@{/images/Notte_Stellata-VanGogh.jpg}" /> <span>Notte
+					stellata - Van Gogh</span> <span>(1889)</span>
+			</div>
+			<div>
+				<img th:src="@{/images/cantoDAmore-deChirico.jpg}" /> <span>Canto
+					d'amore - de Chirico</span> <span>(1914)</span>
+			</div>
+			<div style="margin-bottom: 0px;">
+				<img th:src="@{/images/Veduta_Di_Delft-Vermeer.jpg}" /> <span>Veduta
+					di Delft - Vermeer</span> <span>(1660-1661)</span>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="fragments/base.html :: fondo('/default')"></footer>
+
+</body>
+</html>
