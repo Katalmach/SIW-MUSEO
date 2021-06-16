@@ -575,7 +575,29 @@ a{
 	height: 30px;
 }
 
+/******************************************
+*******************ARTISTI*****************
+*******************************************/
+
+
+#divDescPage2 {
+	display: flex;
+	flex-direction: column;
+	align-items:center;
+	text-align:center;
+	text-indent:-2em;
+}
+
+#divDescPage2 span {
+	font-size: 19px;
+	height: 30px;
+}
+
 #divDescPage2 div {
+	height: 40px;
+	margin-left: 100px;
+	margin-top: 50px;	
+}Page2 div {
 	height: 40px;
 	margin-left: 100px;
 	margin-top: 50px;

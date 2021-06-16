@@ -29,16 +29,17 @@ public class Curatore {
 	@Column(nullable = false)
 	private String cognome;
 	
+	@Column(nullable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private LocalDate dataDiNascita;
 	
-
+	@Column(nullable = false)
 	private String luogoDiNascita;
 	
 	@Column(nullable = false, unique = true)
 	private String email;
 	
-	
+	@Column(nullable = false, unique = true)
 	private String numeroDiTelefono;
 	
 	// associazioni
