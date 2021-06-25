@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/base.html :: headerfiles(title=#{header.opere})">
+</head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div id="divElenco">
+		<h4 th:text="#{header.opere}">Lista delle opere</h4>
+		<ul>
+			<li th:each="opera : ${opere}"><a href="opera.html"
+				th:href="@{'/opera' + '/' + ${opera.id}}"
+				th:text="|${opera.titolo} - ${opera.artista.cognome}">Notte
+					stellata</a>
+				<form id="btnElimina"
+					th:action="@{'/eliminaOpera/{id}'(id=${opera.id})}" method="POST"
+					th:object="${opera}">
+					<input type="hidden" name="_method" value="delete" />
+					<button type="submit" value="Submit">Elimina</button>
+				</form>
+				<form id="btnElimina"
+					th:action="@{'/admin/modificaOpera/{id}'(id=${opera.id})}"
+					method="GET" th:object="${opera}">
+					<input type="hidden" name="_method" value="update" />
+					<button type="submit" value="Submit">Modifica</button>
+				</form>
+		</ul>
+	</div>
+	<footer th:replace="fragments/base.html :: fondo('/default')"></footer>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <style>div {
+background-color: #7b002c;
+}</style>
+   </head>
+   <body style="background-color:beige;">
+   <h1 style="color:#7b002c;">Error!</h1>
+   <div style="color:beige;" class="errorPage">
+      <br />
+      <p>
+         There seems to be a problem with the page you requested
+(
+         <span th:text="${path}"></span>
+         ).
+      </p>
+      <p th:text="${'Details: ' + message}" />
+      <p th:text="${'Status: ' + status}" />
+   </div>
+   </body>
+</html>

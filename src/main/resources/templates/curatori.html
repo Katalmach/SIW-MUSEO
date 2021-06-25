@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{header.curatori})"> </head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div id="divElenco">
+    	<h4 th:text="#{header.curatori}">Elenco curatori</h4>
+		<ul>
+			<li th:each="curatore : ${curatori}">
+				<a href="curatore.html" 
+				   th:href="@{'/curatore' + '/' + ${curatore.id}}" 
+				   th:text="|${curatore.nome} &nbsp; ${curatore.cognome}|"></a>
+			</li>
+		</ul>
+	</div>
+	<footer th:replace="fragments/base.html :: fondo('/default')"></footer>
+</body>
+</html>

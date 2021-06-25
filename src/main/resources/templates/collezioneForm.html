@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/base.html :: headerfiles(title=#{title.collezioneForm})">
+</head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div></div>
+	<form id="loginForm" th:action="@{/admin/collezione}" method="POST"
+		th:object="${collezione}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>
+
+		<div id="divForm2">
+			<h4>Inserisci una collezione</h4>
+
+			<div>
+				<span>Nome: </span> <span><input type="text"
+					th:field="*{nome}" required/></span> <span th:if="${#fields.hasErrors('nome')}"
+					th:errors="*{nome}"></span>
+			</div>
+
+			<div>
+				<span>Descrizione: </span> <span><input type="text"
+					th:field="*{descrizione}" required/></span> <span th:if="${#fields.hasErrors('descrizione')}"
+					th:errors="*{descrizione}"></span>
+			</div>
+			
+			<div>
+				<span>Curatore:  </span><select name="curatoreSelezionato" required>
+					<option th:each="curatore : ${curatori}" th:value="${curatore.id}"
+						th:text="|${curatore.nome} ${curatore.cognome}|"></option>
+				</select>
+			</div>
+					
+
+				<span><button type="submit">Conferma</button></span>
+			</div>
+	</form>
+	<footer th:replace="fragments/base.html :: fondo('/default')"></footer>
+</body>
+</html>

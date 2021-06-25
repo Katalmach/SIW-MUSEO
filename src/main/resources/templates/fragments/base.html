@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="headerfiles(title)">
+	<meta charset="UTF-8" />
+	<link th:href="@{/css/home.css}" rel="stylesheet">
+	
+	<title th:text="${title}"></title>
+</head>
+<body>
+	<header id="baseHeader" th:fragment ="intestazione">
+		<span id="titolo"> <img style="width:4%; border-radius:0%; height:3%;"th:src="@{/images/giglio.jpg}"/>	
+		<a style="color:beige;" th:href="@{/default}">Museo F. R. Vonwiller</a>
+		 
+		</span>
+			<ul id="ulBase">
+			<li><a th:href="@{/about}">Chi siamo</a></li>
+			<li><a th:href="@{/artista}">Artisti</a></li>
+			<li><a th:href="@{/collezione}">Collezioni</a></li>
+			<li><a th:href="@{/logout}">Logout</a></li>
+		</ul>
+	</header>	
+	
+	<footer th:fragment="fondo(home)">
+		<div id="divFooter">2021 <a id="foot" th:href="@{${home}}">Museo Vonwiller di
+			Farnese </a>
+			</div>
+		
+	</footer>
+</body>
+</html>

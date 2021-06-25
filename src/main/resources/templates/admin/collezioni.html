@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head
+	th:replace="fragments/base.html :: headerfiles(title=#{header.collezioni})">
+</head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div id="divElenco">
+
+		<h4 th:text="#{header.collezioni}">Collezioni:</h4>
+		<ul>
+			<li id="liPerGets" th:each="collezione : ${collezioni}"><a
+				href="collezione.html"
+				th:href="@{'/admin/collezione' + '/' + ${collezione.id}}"
+				th:text="${collezione.nome}"></a>
+
+
+				<form id="btnElimina"
+					th:action="@{'/eliminaCollezione/{id}'(id=${collezione.id})}"
+					method="POST" th:object="${collezione}">
+					<input type="hidden" name="_method" value="delete" />
+					<button type="submit" value="Submit">Elimina</button>
+				</form>
+				<form id="btnElimina"
+					th:action="@{'/admin/modificaCollezione/{id}'(id=${collezione.id})}"
+					method="GET" th:object="${collezione}">
+					<input type="hidden" name="_method" value="update" />
+					<button type="submit" value="Submit">Modifica</button>
+				</form></li>
+		</ul>
+
+	</div>
+	<footer th:replace="fragments/base.html :: fondo('/default')"></footer>
+</body>
+</html>

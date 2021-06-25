@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{title.collezioni})"> </head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div id="divElenco">
+	
+    	<h4 style="font-size:200%;" th:text="#{header.collezioni}">Collezioni: </h4>
+		<ul>
+			<li id="liPerGets" th:each="collezione : ${collezioni}">
+				<a href="collezione.html" 
+				   th:href="@{'/collezione' + '/' + ${collezione.id}}" 
+				   th:text="${collezione.nome}"></a>
+				  
+			</li>
+		</ul>
+		
+	</div>
+	<footer th:replace="fragments/base.html :: fondo('/default')"></footer>
+</body>
+</html>
